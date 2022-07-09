@@ -2,7 +2,7 @@ import { EmojiHappyIcon } from '@heroicons/react/outline'
 import { CameraIcon, VideoCameraIcon } from '@heroicons/react/solid'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
-import React, { ChangeEvent, useRef, useState } from 'react'
+import React, { ChangeEvent, MouseEvent, useRef, useState } from 'react'
 import { doc, collection, addDoc, setDoc, serverTimestamp } from 'firebase/firestore'
 import { ref, uploadString, getDownloadURL } from 'firebase/storage'
 import { db, storage } from '../firebase'
@@ -13,7 +13,7 @@ const InputBox = () => {
   const filepickerRef = useRef<HTMLInputElement>(null)
   const [imageToPost, setImageToPost] = useState<string | ArrayBuffer | null>(null)
 
-  const sendPost = async (e: Event) => {
+  const sendPost = async (e: MouseEvent) => {
     e.preventDefault()
 
     if (!inputRef?.current?.value) return
@@ -75,7 +75,7 @@ const InputBox = () => {
         <Image className="rounded-full" src={session?.user?.image || '/default_avatar.png'} width={40} height={40} layout="fixed" />
         <form className="flex flex-1">
           <input ref={inputRef} className="h-12 rounded-full bg-gray-100 flex-grow px-5 focus:outline-none" type="text" placeholder={`What's on your mind, ${session?.user?.name}`} />
-          <button hidden type="submit" onClick={sendPost}>
+          <button hidden type="submit" onClick={(e) => sendPost(e)}>
             Submit
           </button>
         </form>

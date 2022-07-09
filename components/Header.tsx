@@ -46,7 +46,7 @@ const Header = () => {
         <Image 
           onClick={() => signOut()}
           className="rounded-full cursor-pointer"
-          src={session.user.image}
+          src={session?.user?.image || '/default_avatar.png'}
           width="40"
           height="40"
           layout='fixed'
