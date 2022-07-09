@@ -1,9 +1,11 @@
 import type { NextPage } from 'next'
-import { GetServerSideProps, InferGetServerSidePropsType  } from 'next'
 import Head from 'next/head'
 import Header from '../components/Header'
 import { useSession } from "next-auth/react"
 import Login from '../components/Login'
+import SideBar from '../components/SideBar'
+import Feed from '../components/Feed'
+import Widgets from '../components/Widgets'
 
 const Home: NextPage = () => {
   const { data: session } = useSession()
@@ -11,9 +13,9 @@ const Home: NextPage = () => {
   if(!session) return <Login />
 
   return (
-    <div>
+    <div className='bg-gray-100 h-screen overflow-hidden'>
       <Head>
-        <title>Create Next App</title>
+        <title>kw's Facebook</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -21,7 +23,11 @@ const Home: NextPage = () => {
         <Header />
       </header>
 
-      <main></main>
+      <main className='flex '>
+        <SideBar />
+        <Feed />
+        <Widgets />
+      </main>
     </div>
   )
 }

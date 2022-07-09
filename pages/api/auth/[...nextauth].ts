@@ -8,8 +8,8 @@ export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   providers: [
     FaceBookProvider({
-      clientId: process.env.FACEBOOK_ID!,
-      clientSecret: process.env.FACEBOOK_SECRET!,
+      clientId: process.env.FACEBOOK_CLIENT_ID!,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
     }),
     // ...add more providers here、
     GoogleProvider({
