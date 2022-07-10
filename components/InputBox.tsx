@@ -95,7 +95,7 @@ const InputBox = () => {
 
         <div onClick={() => filepickerRef.current!.click()} className="inputIcon">
           <CameraIcon className="h-7 text-green-400" />
-          <p className="text-xs sm:text-sm xl:text-base">Phone/Video</p>
+          <p className="text-xs sm:text-sm xl:text-base">Photo/Video</p>
           <input ref={filepickerRef} onChange={addImageToPost} type="file" hidden />
         </div>
 
